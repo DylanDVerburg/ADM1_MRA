@@ -79,3 +79,9 @@ k_dec_X_c4,0.02,d^-1,,
 k_dec_X_pro,0.02,d^-1,,
 k_dec_X_ac,0.02,d^-1,,
 k_dec_X_h2,0.02,d^-1,,
+k_dec_X_hSRB,0.02,d^-1,,
+k_m_SO4,8.064,d^-1,,
+K_S_SO4,0.1,kgCOD.m^-3,,not from literature!
+Y_SO4,0.151,kg COD x/kg COD SO4,,from Reis 1992
+pH_UL_hSRB,7,,,
+pH_LL_hSRB,5.7,,,
