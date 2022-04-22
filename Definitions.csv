@@ -85,3 +85,4 @@ K_S_SO4,0.1,kgCOD.m^-3,,not from literature!
 Y_SO4,0.151,kg COD x/kg COD SO4,,from Reis 1992
 pH_UL_hSRB,7,,,
 pH_LL_hSRB,5.7,,,
+K_I_H2S_H2,0.000001,,,not from literature!
