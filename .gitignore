@@ -1,3 +1,6 @@
 
 .ipynb_checkpoints/ADM1 opt-checkpoint.ipynb
 *.png
+.ipynb_checkpoints/ADM1_class-checkpoint.py
+.ipynb_checkpoints/sensitivity_test-checkpoint.ipynb
+.ipynb_checkpoints/testbed_values-checkpoint.csv
