@@ -246,7 +246,7 @@ class ADM1_instance:
         diff_X_xc = self.q_ad / self.V_liq * (X_xc_in - X_xc) - Rho_1 + Rho_13 + Rho_14 + Rho_15 + Rho_16 + Rho_17 + Rho_18 + Rho_19 + Rho_21  # eq13 
         diff_X_ch = self.q_ad / self.V_liq * (X_ch_in - X_ch) + self.Stoichiometric_parameters['f_ch_xc'] * Rho_1 - Rho_2  # eq14 
         diff_X_pr = self.q_ad / self.V_liq * (X_pr_in - X_pr) + self.Stoichiometric_parameters['f_pr_xc'] * Rho_1 - Rho_3  # eq15 
-        diff_X_li = self.q_ad / self.V_liq * (X_li_in - X_li) + self.Stoichiometric_parameters['f_li_xc'] * Rho_13 - Rho_4  # eq16 
+        diff_X_li = self.q_ad / self.V_liq * (X_li_in - X_li) + self.Stoichiometric_parameters['f_li_xc'] * Rho_1 - Rho_4  # eq16 
         diff_X_su = self.q_ad / self.V_liq * (X_su_in - X_su) + self.Stoichiometric_parameters['Y_su'] * Rho_5 - Rho_13  # eq17
         diff_X_aa = self.q_ad / self.V_liq * (X_aa_in - X_aa) + self.Stoichiometric_parameters['Y_aa'] * Rho_6 - Rho_14  # eq18
         diff_X_fa = self.q_ad / self.V_liq * (X_fa_in - X_fa) + self.Stoichiometric_parameters['Y_fa'] * Rho_7 - Rho_15  # eq19
@@ -478,4 +478,4 @@ class ADM1_instance:
     def loading_bar(self, i, max_range, bars = 10):
         a = max_range / bars
         if i % int(a) == 0:
-            print('{', '|' * (int(i / a)+1) ,(' ' * int(((max_range - i)/a)-1)), '}')
+            print('{', '|' * (int(i / a) + 1) ,(' ' * int(((max_range - i) / a) - 1)), '}')
