@@ -377,7 +377,7 @@ class ADM1_instance:
             
         return S_va_ion, S_bu_ion, S_pro_ion, S_ac_ion, S_hco3_ion, S_nh3, S_H_ion, pH, p_gas_h2, S_h2, S_nh4_ion, S_co2, S_HS_ion
         
-    def dyn_sim(self, t_end, file_name = np.nan, batch_reactor = True, solvermethod = 'DOP853', resolution = 10):       
+    def dyn_sim(self, t_end, file_name = np.nan, batch_reactor = True, solvermethod = 'DOP853', resolution = 10, feedback = True):       
         state_zero = self.set_initial_states() #setting the initial states for the initial time (t0) to be ready for the start of the simulation
         state_input = self.setInfluent(0) #setting the influent for the initial time (t0) to be ready for the start of the simulation
         
@@ -395,20 +395,20 @@ class ADM1_instance:
         simulate_results.append(s0) 
         
         gasflow = []
-        gasflow.append(["q gas", "q ch4", "total ch4", "P h2", "P ch4", "P co2", "P H2S", "P h2o"]) # add all gasses
+        gasflow.append(["q_gas", "q_ch4", "total_ch4", "P_h2", "P_ch4", "P_co2", "P_H2S", "P_h2o"]) # add all gasses
         
         total_ch4 = 0
         t0=0
         n=0
         
         ## Dynamic simulation
-        # Loop for simlating at each time step and feeding the results to the next time step
+        # Loop for simlating at each time step and feeding the results to the next time step 
         for u in t[1:]:
-            self.loading_bar(n, len(t))
-            #print(n% (len(t)/20))
-            #if n% (len(t)/20) == 0:  
-            #    print(f'{n} / {len(t)}') #keep an eye on processing speed
+            if feedback:
+                self.loading_bar(n, len(t))
+            
             n+=1
+            
             if batch_reactor == False:
                 state_input = self.setInfluent(n) #not needed as a batch system is being used
 
@@ -466,8 +466,9 @@ class ADM1_instance:
             simulate_results_pd.to_csv(f"{file_name}.csv", index = False)
 
         ##for testing purpouses only##
-        for i in range(1, 10):             
-            ws.Beep(i * 100, 200)
+        if feedback:
+            for i in range(1, 10):             
+                ws.Beep(i * 100, 200)
         
         self.simulate_results_pd = simulate_results_pd
         self.gasflow_pd = gasflow_pd
