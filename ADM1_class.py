@@ -1,12 +1,12 @@
 import numpy as np
 import scipy.integrate
-import copy
 import pandas as pd
 import matplotlib.pyplot as plt
 from scipy import integrate
 import winsound as ws
 
 class ADM1_instance:
+    
     def __init__(self, T_ad = 298.15, V_liq = 3400, V_gas = 300, p_atm = 1.013, q_ad = 0):
         
                
@@ -395,7 +395,7 @@ class ADM1_instance:
         simulate_results.append(s0) 
         
         gasflow = []
-        gasflow.append(["q_gas", "q_ch4", "total_ch4", "P_h2", "P_ch4", "P_co2", "P_H2S", "P_h2o"]) # add all gasses
+        gasflow.append(["q_gas", "p_gas", "q_ch4", "total_ch4", "P_h2", "P_ch4", "P_co2", "P_H2S", "P_h2o"]) # add all gasses
         
         total_ch4 = 0
         t0=0
@@ -440,7 +440,7 @@ class ADM1_instance:
                 q_ch4 = 0
 
             total_ch4 += q_ch4 
-            gasflow.append([q_gas, q_ch4, total_ch4, p_gas_h2, p_gas_ch4, p_gas_co2, p_gas_H2S, self.p_gas_h2o])
+            gasflow.append([q_gas, p_gas, q_ch4, total_ch4, p_gas_h2, p_gas_ch4, p_gas_co2, p_gas_H2S, self.p_gas_h2o])
 
             S_co2 =  (S_IC - S_hco3_ion)
             S_nh4_ion =  (S_IN - S_nh3)
